@@ -1,0 +1,148 @@
+  <div class="panel-heading">
+    <h3 class="panel-title">Título da página pipitchu</h3>
+  </div>
+  <div class="panel-body">
+<h3>ClasseC</h3>
+<div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
+  <datasource filter="" name="ClasseC" entity="api/rest/ClasseC" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+</div>
+<div class="row">
+  <div class="col-xs-4">
+    <div data-component="crn-button" id="crn-button-564202">
+      <button class="btn btn-primary" type="submit" onclick="" ng-click="ClasseC.startInserting()" ng-hide="ClasseC.inserting || ClasseC.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <label for="search">Itens por página:</label>
+    <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="component-holder" data-component="crn-grid" id="crn-grid-ClasseC">
+      <div crn-datasource="ClasseC" class="">
+        <table class="table  table-bordered table-hover table-striped">
+          <thead>
+            <tr class="table-header">
+              <th class="">
+                <div class="">Id</div>
+              </th>
+              <th class="">
+                <div class="">Atributo 1</div>
+              </th>
+              <th class="">
+                <div class="">{{"template.crud.actions" | translate}}</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-content" dir-paginate="rowData in datasource.data |itemsPerPage: pageSize" pagination-id="controlePaginacao" ng-init="ClasseC.row = ClasseC.active" ng-class="{info : rowData.id == datasource.row.id}" ng-click="datasource.row = rowData">
+              <td class="">
+                <div class="">
+                  {{rowData.id}}
+                  
+                </div>
+              </td>
+              <td class="">
+                <div class="">
+                  {{rowData.atributo1}}
+                  
+                </div>
+              </td>
+              <td class="">
+                <div class="">
+                  <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
+                  <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="controle-paginacao">
+            <dir-pagination-controls pagination-id="controlePaginacao" max-size="4" direction-links="true" boundary-links="false" class="pull-right"></dir-pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div data-component="crn-form" id="crn-form-form-ClasseC">
+        <div class="form">
+          <form crn-datasource="ClasseC" class="">
+            <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
+              <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
+              <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
+            </div>
+            <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+              
+              <div data-component="crn-textinput" id="crn-textinput-atributo1">
+                <div class="form-group">
+                  
+                  <label for="textinput-atributo1" class="">Atributo 1</label>
+                  
+                  <input type="text" ng-model="ClasseC.active.atributo1" class="form-control" id="textinput-atributo1" placeholder="Atributo 1"  required="required">
+                </div>
+              </div>
+              
+              <div data-component="crn-textinput" id="crn-textinput-atributo2">
+                <div class="form-group">
+                  
+                  <label for="textinput-atributo2" class="">Atributo 2</label>
+                  
+                  <input type="text" ng-model="ClasseC.active.atributo2" class="form-control" id="textinput-atributo2" placeholder="Atributo 2"  >
+                </div>
+              </div>
+              
+              <div data-component="crn-textinput" id="crn-textinput-atributo3">
+                <div class="form-group">
+                  
+                  <label for="textinput-atributo3" class="">Atributo 3</label>
+                  
+                  <div style="position:relative">
+                    <input type="text" as-date
+                    format="DD/MM/YYYY"
+                    ng-model="ClasseC.active.atributo3" class="form-control" id="textinput-atributo3" placeholder="Atributo 3" >
+                  </div>
+                </div>
+              </div>
+              
+              <div data-component="crn-textinput" id="crn-textinput-atributo4">
+                <div class="form-group">
+                  
+                  <label for="textinput-atributo4" class="">Atributo 4</label>
+                  
+                  <div style="position:relative">
+                    <input type="text" as-date
+                    format="DD/MM/YYYY"
+                    ng-model="ClasseC.active.atributo4" class="form-control" id="textinput-atributo4" placeholder="Atributo 4" >
+                  </div>
+                </div>
+              </div>
+              
+              <div data-component="crn-textinput" id="crn-textinput-atributo5">
+                <div class="form-group">
+                  
+                  <label for="textinput-atributo5" class="">Atributo 5</label>
+                  
+                  <div style="position:relative">
+                    <input type="text" as-date
+                    format="DD/MM/YYYY"
+                    ng-model="ClasseC.active.atributo5" class="form-control" id="textinput-atributo5" placeholder="Atributo 5" >
+                  </div>
+                </div>
+              </div>
+              
+              <!-- OneToN -->
+              <!-- OneToOne  end -->
+              
+              <!-- NtoN  -->
+              <!-- NtoN  end-->
+              
+            </fieldset>
+            
+            
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

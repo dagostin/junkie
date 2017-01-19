@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><Context>
+    <Resource accessToUnderlyingConnectionAllowed="false" driverClassName="org.h2.Driver" logAbandoned="true" name="jdbc/Default" password="cronapp" removeAbandoned="false" removeAbandonedTimeout="60" type="javax.sql.DataSource" url="jdbc:h2:file:~/Default;DATABASE_TO_UPPER=false;ALIAS_COLUMN_NAME=true" username="cronapp"/>
+</Context>
