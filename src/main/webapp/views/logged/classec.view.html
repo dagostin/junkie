@@ -7,34 +7,43 @@
   <datasource filter="" name="ClasseC" entity="api/rest/ClasseC" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div class="row">
-  <div class="col-xs-4">
+  <div class="col-md-3">
     <div data-component="crn-button" id="crn-button-564202">
       <button class="btn btn-primary" type="submit" onclick="" ng-click="ClasseC.startInserting()" ng-hide="ClasseC.inserting || ClasseC.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
     </div>
   </div>
-  <div class="col-xs-4">
-    <label for="pageSizeSelect">Itens por página:</label>
-    <!--<input type="number" min="1" max="100" class="form-control" ng-model="pageSize">-->
-    <select name="pageSizeSelect" id="pageSizeSelect" ng-model="pageSize.initialValue"
-         ng-options = "x.id for x in pageSize.options track by x.id">
-    </select>
+  <div class="col-md-3">
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-6">
-    <tt>SESSION ITEM = {{pageSize.initialValue.id}}</tt><br/>
+  <div class="col-md-6"> 
+    <div class="row">
+        <div class="col-md-6">
+            <tt>SESSION ITEM = {{pageSize.initialValue.id}}</tt><br/>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <label for="pageSizeSelect">Itens por página </label>
+                <select class="pull-right" name="pageSizeSelect" id="pageSizeSelect" ng-model="pageSize.initialValue"
+                     ng-options = "x.id for x in pageSize.options track by x.id">
+                </select>                
+            </div>
+        </div>
+    </div>
     <div class="component-holder" data-component="crn-grid" id="crn-grid-ClasseC">
       <div crn-datasource="ClasseC" class="">
         <table class="table  table-bordered table-hover table-striped" ng-controller="ordenar">
           <thead>
             <tr class="table-header">
               <!-- <th>Id</th> -->
-              <th class="" ng-click="datasource.data = order(datasource.data, 'id', false, 'String')">
-                <div data-container="true" class="text-left"> Id </div> 
+              <th ng-click="datasource.data = order(datasource.data, 'id', false, 'String')">
+                <span class="text-left">Id</span> 
+                <span class="column-order pull-right" ng-show="predicate === 'id'" ng-class="{reverse: reverse}"></span>
               </th>
               <!-- <th>Atributo 1</th> -->
-              <th class="sortorder" ng-click="datasource.data = order(datasource.data, 'atributo1', false, 'String')">
-                <div data-container="true" ng-class="{'order-asc': reverse === true, 'order-desc': reverse === false}" class="text-left"> Atributo 1 </div> 
+              <th ng-click="datasource.data = order(datasource.data, 'atributo1', false, 'String')">
+                <span class="text-left">Atributo 1</span> 
+                <span class="column-order pull-right" ng-show="predicate === 'atributo1'" ng-class="{reverse: reverse}"></span>
               </th>
               <th>
                 <div class="text-center"> {{"template.crud.actions" | translate}} </div> 
