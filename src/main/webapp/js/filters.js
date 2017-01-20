@@ -45,4 +45,17 @@
     	}
 	);
 	
+	app.filter('ordenar',function(){
+    return function (items, predicate, reverse) {
+      items.sort(function (a, b) {
+          return a[predicate].localeCompare(b[predicate]);
+      });
+      if(reverse === true){
+        return items.slice().reverse();
+      }else{
+        return items;
+      }
+    };
+  });
+	
 }(app));

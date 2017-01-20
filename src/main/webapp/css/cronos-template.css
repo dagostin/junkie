@@ -38,3 +38,11 @@
     border-color: #325d88;
     font-size: 14px;
 }
+
+.order-asc {
+  content: '\2193';
+}
+
+.order-desc {
+  content: '\2191';
+}

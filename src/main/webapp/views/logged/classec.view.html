@@ -13,34 +13,39 @@
     </div>
   </div>
   <div class="col-xs-4">
-    <label for="search">Itens por página:</label>
-    <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+    <label for="pageSizeSelect">Itens por página:</label>
+    <!--<input type="number" min="1" max="100" class="form-control" ng-model="pageSize">-->
+    <select name="pageSizeSelect" id="pageSizeSelect" ng-model="pageSize.initialValue"
+         ng-options = "x.id for x in pageSize.options track by x.id">
+    </select>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-6">
+    <tt>SESSION ITEM = {{pageSize.initialValue.id}}</tt><br/>
     <div class="component-holder" data-component="crn-grid" id="crn-grid-ClasseC">
       <div crn-datasource="ClasseC" class="">
-        <table class="table  table-bordered table-hover table-striped">
+        <table class="table  table-bordered table-hover table-striped" ng-controller="ordenar">
           <thead>
             <tr class="table-header">
-              <th class="">
-                <div class="">Id</div>
+              <!-- <th>Id</th> -->
+              <th class="" ng-click="datasource.data = order(datasource.data, 'id', false, 'String')">
+                <div data-container="true" class="text-left"> Id </div> 
               </th>
-              <th class="">
-                <div class="">Atributo 1</div>
+              <!-- <th>Atributo 1</th> -->
+              <th class="sortorder" ng-click="datasource.data = order(datasource.data, 'atributo1', false, 'String')">
+                <div data-container="true" ng-class="{'order-asc': reverse === true, 'order-desc': reverse === false}" class="text-left"> Atributo 1 </div> 
               </th>
-              <th class="">
-                <div class="">{{"template.crud.actions" | translate}}</div>
+              <th>
+                <div class="text-center"> {{"template.crud.actions" | translate}} </div> 
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr class="table-content" dir-paginate="rowData in datasource.data |itemsPerPage: pageSize" pagination-id="controlePaginacao" ng-init="ClasseC.row = ClasseC.active" ng-class="{info : rowData.id == datasource.row.id}" ng-click="datasource.row = rowData">
+            <tr class="table-content" dir-paginate="rowData in datasource.data |itemsPerPage: pageSize.initialValue.id" pagination-id="controlePaginacao" ng-init="ClasseC.row = ClasseC.active" ng-class="{info : rowData.id == datasource.row.id}" ng-click="datasource.row = rowData">
               <td class="">
                 <div class="">
                   {{rowData.id}}
-                  
                 </div>
               </td>
               <td class="">
@@ -129,17 +134,7 @@
                   </div>
                 </div>
               </div>
-              
-              <!-- OneToN -->
-              <!-- OneToOne  end -->
-              
-              <!-- NtoN  -->
-              <!-- NtoN  end-->
-              
             </fieldset>
-            
-            
-            
           </form>
         </div>
       </div>

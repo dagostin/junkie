@@ -140,9 +140,21 @@ var app = (function() {
         $scope[x]= app.userEvents[x].bind($scope);
       
       // save state params into scope
-      $scope.params = $stateParams;
-      $scope.$http = $http;
-      $scope.pageSize = 2;
+      // $scope.params = $stateParams;
+      // $scope.$http = $http;
+      
+      // Datatable itens display
+      // if (!$scope.pageSize)
+      //   $scope.pageSize = 25;      
+      
+      $scope.pageSize = {
+        model: null,
+          options: [
+            {id: 10},
+            {id: 25},
+            {id: 50}
+          ], initialValue: {id: 10}
+      };
       
       // Query string params
       var queryStringParams = $location.search();

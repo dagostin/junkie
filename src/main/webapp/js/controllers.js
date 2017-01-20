@@ -190,4 +190,35 @@
           }
         }
     }]);
-} (app));
+    
+  app.controller('ordenar',
+    ['$scope',
+    '$filter',
+    function($scope, $filter) {
+      var orderBy = $filter('orderBy');
+      $scope.predicate = ""; //coluna a ser ordenada
+      $scope.reverse = true; //se é ordem asc ou desc
+
+      $scope.order = function(items, predicate, reverse) {
+        if ($scope.predicate == predicate) {
+          if ($scope.reverse === false) {
+            reverse = true;
+          } else {
+            reverse = false;
+          }
+        } else {
+          reverse = false;
+        }
+
+        $scope.reverse = reverse;
+        items = $filter("ordenar")(items, predicate, reverse);
+       
+        $scope.predicate = predicate;
+        return items;
+      };
+    }
+    
+    
+]);
+
+}(app));
