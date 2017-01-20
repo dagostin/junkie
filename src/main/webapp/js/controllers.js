@@ -209,8 +209,9 @@
         } else {
           reverse = false;
         }
-
+        
         $scope.reverse = reverse;
+        
         items = $filter("ordenar")(items, predicate, reverse);
        
         $scope.predicate = predicate;

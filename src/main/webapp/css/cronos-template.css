@@ -39,10 +39,10 @@
     font-size: 14px;
 }
 
-.order-asc {
+.column-order:after {
   content: '\2193';
 }
 
-.order-desc {
+.column-order.reverse:after {
   content: '\2191';
 }
