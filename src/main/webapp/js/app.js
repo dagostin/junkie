@@ -135,25 +135,31 @@ var app = (function() {
 
     // General controller
     .controller('PageController',["$scope","$stateParams","$location","$http", "$rootScope",function($scope, $stateParams, $location, $http, $rootScope){
-      
+
       for(var x in app.userEvents)
         $scope[x]= app.userEvents[x].bind($scope);
       
       // save state params into scope
-      // $scope.params = $stateParams;
-      // $scope.$http = $http;
+      $scope.params = $stateParams;
+      $scope.$http = $http;
+
+      $scope.changePageSize = function (pageSize) {
+        console.log('sessionStorage.pageSize:' + sessionStorage.pageSize);
+        console.log('pageSize:' + pageSize);
+        sessionStorage.setItem("pageSize", pageSize);
+      };
       
       // Datatable itens display
-      // if (!$scope.pageSize)
-      //   $scope.pageSize = 25;      
-      
-      $scope.pageSize = {
+      if (!$scope.pageSize)
+        $scope.pageSize = sessionStorage.pageSize;      
+        
+      $scope.pageSizeData = {
         model: null,
           options: [
             {id: 10},
             {id: 25},
             {id: 50}
-          ], initialValue: {id: 10}
+          ], initialValue: {id: sessionStorage.pageSize}
       };
       
       // Query string params

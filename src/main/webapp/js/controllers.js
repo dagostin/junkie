@@ -33,6 +33,8 @@
                 // The home page may not work if it depends
                 // on the logged user data
             }
+            // Ajusta valor padrão de itens por página
+            sessionStorage.setItem("pageSize", 50);
             
             // Redirect to home page
             $state.go("home");
@@ -57,6 +59,7 @@
         // was saved on the browser's sessionStorage
         $rootScope.session = (sessionStorage._u) ? JSON.parse(sessionStorage._u) : null;
         $rootScope.myTheme = $rootScope.session.theme;
+  
         $scope.$watch('myTheme', function(value) {
           if (value !== undefined && value != "") {
             $('#themeSytleSheet').attr('href', "css/themes/"+value+".min.css");
@@ -91,6 +94,8 @@
             } else {
                 // It's not working with sessionStorage
             }
+            
+            
             
             $state.go("login");
         }
@@ -190,7 +195,7 @@
           }
         }
     }]);
-    
+
   app.controller('ordenar',
     ['$scope',
     '$filter',
